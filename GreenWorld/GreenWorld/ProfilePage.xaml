@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GreenWorld.ProfilePage"
+             NavigationPage.HasNavigationBar="True"
+             Title="Profile">
+    <ContentPage.Content>
+        <StackLayout Margin="20"
+                     BackgroundColor="AliceBlue"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+            <Grid Padding="0,20,10,20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                <!--<StackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Orientation="Horizontal"
+                             Grid.Row="0"
+                             Grid.ColumnSpan="2"
+                             BackgroundColor="Beige">
+                    <Button Text="Back"
+                            x:Name="ProfileBackButton"
+                            Clicked="OnProfileBackButtonClicked"
+                            />
+                    <Label Text="Profile"
+                           x:Name="ProfileBannerLabel"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Large"/>
+                </StackLayout>-->
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Green"
+                             Grid.Row="0"
+                             Grid.ColumnSpan="2">
+                    <Image Source="{Binding ProfileImageUrl}"
+                            Aspect="AspectFill"
+                            HeightRequest="50"
+                            WidthRequest="100" />
+                    <StackLayout>
+                        <Label Text="{Binding FirstName}"/>
+                        <Label Text="{Binding LastName}"/>
+                        <Label Text="{Binding PhoneNumber}"/>
+                        <Label Text="{Binding EmailAddress}"/>
+                        <Label Text="{Binding PointsTotal}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1"
+                             Grid.ColumnSpan="2"
+                             HorizontalOptions="Center">
+                <Label Text="Past Tasks Completed: "
+                       FontAttributes="Bold"
+                       TextColor="Tomato"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="2"
+                             HorizontalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center">
+                        <Label Text="Task Completed"></Label>
+                        <BoxView BackgroundColor="Orange"></BoxView>
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="Center">
+                        <Label Text="Completion Date"></Label>
+                        <BoxView BackgroundColor="Violet"></BoxView>
+                    </StackLayout>
+                </StackLayout>
+
+                <Label Grid.Row="3"
+                            Grid.Column="0"
+                            Text="{Binding CompletedTaskIds}"/>
+                <Label Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding CompletionDate}"
+                            FontAttributes="Bold"
+                            TextColor="Blue"
+                            TextDecorations="Underline"/>
+                
+                <StackLayout Grid.Row="4"
+                             Grid.ColumnSpan="2"
+                             Orientation="Horizontal">
+                    <Button Text="Profile"/>
+                    <Button Text="List"/>
+                    <Button Text="Record Tasks"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

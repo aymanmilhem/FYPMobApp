@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GreenWorld.ProfilePageNew"
+             NavigationPage.HasBackButton="True"
+             Title="Profile">
+    <ContentPage.Content>
+        <StackLayout Padding="5,10,5,5">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="ImagePlaceholder" 
+                       HeightRequest="100"
+                       WidthRequest="100"/>
+                <StackLayout>
+                    <Label Text="Name:"></Label>
+                    <Label Text="Phone Number:"></Label>
+                    <Label Text="eMail:"></Label>
+                    <Label Text="Points Total:"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                         BackgroundColor="MediumAquamarine">
+                        <Label Text="Completed Task"
+                               HorizontalOptions="StartAndExpand"
+                               TextColor="Tomato"
+                               FontSize="Default"
+                               FontAttributes="Bold"/>
+                        <Label Text="Completed On" 
+                               HorizontalOptions="EndAndExpand"
+                               TextColor="Tomato"
+                               FontSize="Default"
+                               FontAttributes="Bold"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <ListView ItemsSource="{Binding Tasks}">
+                            <ListView.ItemTemplate >
+                                <DataTemplate >
+                                    <ViewCell >
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding TaskName}"
+                                                       HorizontalOptions="StartAndExpand"/>
+                                                <Label Text="{Binding CompletionDate}"
+                                                       HorizontalOptions="EndAndExpand"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Button Text="Profile"/>
+                <Button Text="List"/>
+                <Button Text="Record Tasks"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GreenWorld.ClientList"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True"
+             Title="ClientList">
+    <StackLayout Margin="5"
+                 HorizontalOptions="Center">
+        <ListView ItemsSource="{Binding Users}"
+                  HasUnevenRows="True"
+                  ItemSelected="OnListViewItemSelected"
+                  ItemTapped="OnListViewItemTapped">
+            <ListView.ItemTemplate >
+                <DataTemplate >
+                    <ViewCell >
+                        <Grid Padding="5,5,0,5"
+                              Margin="0,0,0,5"
+                              BackgroundColor="AliceBlue">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="3"
+                                   Source="ImagePlaceholder"
+                                   Aspect="AspectFill"
+                                   HeightRequest="80"
+                                   WidthRequest="80" />
+                            <Label Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="{Binding FirstName}"
+                                   FontAttributes="Bold"
+                                   TextDecorations="Underline"
+                                   TextColor="ForestGreen"
+                                   FontSize="Default"
+                                   HorizontalOptions="Center"/>
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding LastName}"
+                                   VerticalOptions="End" />
+                            <StackLayout Grid.Row="2"
+                                         Grid.Column="1"
+                                         Grid.ColumnSpan="2"
+                                         Orientation="Horizontal"
+                                         HorizontalOptions="Center">
+                                <Label 
+                                   Text="{Binding EmailAddress}"
+                                   TextColor="Blue"
+                                   TextDecorations="Underline"
+                                   x:Name="LinkLabel" 
+                                    IsVisible="False"/>
+
+                                </StackLayout>
+
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Fill"
+                     Margin="0,10,0,0" >
+            <Button Text="Profile"
+                    HorizontalOptions="CenterAndExpand"
+                    Clicked="OnProfileButtonClicked"
+                    CornerRadius="10"/>
+            <Button Text="List"
+                    x:Name="BottomBarListButton"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="10"
+                    Clicked="OnBottomBarListButtonClicked"/>
+            <Button Text="Record Tasks"
+                    x:Name="BottomBarRecordTaskButton"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="10"
+                    Clicked="OnBottomBarRecordTaskButton"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
