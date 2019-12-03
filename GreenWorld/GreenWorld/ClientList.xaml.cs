@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GreenWorld.Persistence;
+using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,18 +14,61 @@ namespace GreenWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ClientList : ContentPage
     {
-        public IList<User> Users { get; private set; }
+        private SQLiteAsyncConnection _connection;
+        private ObservableCollection<User> _userList;
+        //public IList<User> Users { get; private set; }
         public ClientList()
         {
             InitializeComponent();
 
-            var connection = DependencyService.Get<ISQLiteDB>().GetConnection();
-            connection.CreateTableAsync<User>();
+            _connection = DependencyService.Get<ISQLiteDB>().GetConnection();
 
-            connection.Table<User>().ToListAsync();
+            //Users = new List<User>();
+            //Users.Add(new User
+            //{
+            //    EmailAddress = "ayman@ccp.ac.nz",
+            //    FirstName = "Ayman",
+            //    LastName = "Milhem"
+            //});
+
+            //Users.Add(new User
+            //{
+            //    EmailAddress = "amr@cpp.ac.nz",
+            //    FirstName = "Amr",
+            //    LastName = "Adel"
+            //});
+
+            _connection.CreateTableAsync<User>();
+
+            var users = _connection.Table<User>().ToListAsync();
+            _userList = new ObservableCollection<User>(users);
+
+            clientListView.ItemsSource = _userList;
+
+            var user = new User
+            {
+                FirstName = "Ahmad",
+                LastName = "Saadat",
+                EmailAddress = "sillyIdiot"
+            };
+
+            _userList.Add(user);
 
             BindingContext = this;
+
         }
+
+        //protected override async void OnAppearing()
+        //{
+        //    await _connection.CreateTableAsync<User>();
+
+        //    var users = await _connection.Table<User>().ToListAsync();
+        //    _userList = new ObservableCollection<User>(users);
+
+        //    clientListView.ItemsSource = _userList;
+
+        //    base.OnAppearing();
+        //}
 
         private void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

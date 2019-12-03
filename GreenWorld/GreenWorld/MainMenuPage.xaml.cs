@@ -15,6 +15,7 @@ namespace GreenWorld
         public MainMenuPage()
         {
             InitializeComponent();
+             
 
         }
 
@@ -40,13 +41,13 @@ namespace GreenWorld
 
         private async void MainPageSignUpButton_OnClicked(object sender, EventArgs e)
         {
-            // change later to the right navigation page
             await Navigation.PushAsync(new SignUp());
         }
 
         private async void MainPageUserListButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ClientList(), true);
+            //await Navigation.PushAsync(new ClientList());
+            await Navigation.PushAsync(new ClientList());
         }
     }
 }

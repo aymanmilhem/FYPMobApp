@@ -9,11 +9,13 @@
              NavigationPage.HasBackButton="True"
              Title="ClientList">
     <StackLayout Margin="5"
-                 HorizontalOptions="Center">
-        <ListView ItemsSource="{Binding Users}"
-                  HasUnevenRows="True"
+                 HorizontalOptions="Center"
+                 BackgroundColor="DarkGoldenrod">
+        <ListView ItemsSource="{Binding ClientList._userList}"
+            HasUnevenRows="True"
                   ItemSelected="OnListViewItemSelected"
-                  ItemTapped="OnListViewItemTapped">
+                  ItemTapped="OnListViewItemTapped"
+                  x:Name="clientListView"><!--ItemsSource="{Binding _userList}"-->
             <ListView.ItemTemplate >
                 <DataTemplate >
                     <ViewCell >
@@ -38,30 +40,27 @@
                                    WidthRequest="80" />
                             <Label Grid.Column="1"
                                    Grid.Row="0"
-                                   Text="{Binding FirstName}"
                                    FontAttributes="Bold"
                                    TextDecorations="Underline"
                                    TextColor="ForestGreen"
                                    FontSize="Default"
-                                   HorizontalOptions="Center"/>
+                                   HorizontalOptions="Center"/><!--Text="{Binding FirstName}"-->
                             <Label Grid.Row="1"
                                    Grid.Column="1"
                                    Grid.ColumnSpan="2"
-                                   Text="{Binding LastName}"
-                                   VerticalOptions="End" />
+                                   VerticalOptions="End" /><!--Text="{Binding LastName}"-->
                             <StackLayout Grid.Row="2"
                                          Grid.Column="1"
                                          Grid.ColumnSpan="2"
                                          Orientation="Horizontal"
                                          HorizontalOptions="Center">
-                                <Label 
-                                   Text="{Binding EmailAddress}"
-                                   TextColor="Blue"
+                                <Label
+                                    TextColor="Blue"
                                    TextDecorations="Underline"
                                    x:Name="LinkLabel" 
-                                    IsVisible="False"/>
+                                    IsVisible="False"/><!--Text="{Binding EmailAddress}"-->
 
-                                </StackLayout>
+                            </StackLayout>
 
                         </Grid>
                     </ViewCell>
