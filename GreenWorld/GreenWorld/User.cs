@@ -12,9 +12,15 @@ namespace GreenWorld
 
         [MaxLength(40)]
         public string FirstName { get; set; }
-        
+
         [MaxLength(40)]
         public string LastName { get; set; }
+
+        public string FirstLastName
+        {
+            get { return FirstName + " " + LastName; }
+            
+        }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
         public int PointsTotal { get; set; }

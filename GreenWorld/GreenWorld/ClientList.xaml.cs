@@ -14,61 +14,37 @@ namespace GreenWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ClientList : ContentPage
     {
-        private SQLiteAsyncConnection _connection;
-        private ObservableCollection<User> _userList;
-        //public IList<User> Users { get; private set; }
+        public IList<User> Users { get; private set; }
         public ClientList()
         {
             InitializeComponent();
 
-            _connection = DependencyService.Get<ISQLiteDB>().GetConnection();
+            Users = new List<User>();
 
-            //Users = new List<User>();
-            //Users.Add(new User
-            //{
-            //    EmailAddress = "ayman@ccp.ac.nz",
-            //    FirstName = "Ayman",
-            //    LastName = "Milhem"
-            //});
-
-            //Users.Add(new User
-            //{
-            //    EmailAddress = "amr@cpp.ac.nz",
-            //    FirstName = "Amr",
-            //    LastName = "Adel"
-            //});
-
-            _connection.CreateTableAsync<User>();
-
-            var users = _connection.Table<User>().ToListAsync();
-            _userList = new ObservableCollection<User>(users);
-
-            clientListView.ItemsSource = _userList;
-
-            var user = new User
+            Users.Add(new User
             {
-                FirstName = "Ahmad",
-                LastName = "Saadat",
-                EmailAddress = "sillyIdiot"
-            };
+                FirstName = "Ayman",
+                LastName = "Milhem",
+                EmailAddress = "ayman@milhem.com"
+            });
 
-            _userList.Add(user);
+            Users.Add(new User
+            {
+                FirstName = "Amr",
+                LastName = "Adel",
+                EmailAddress = "amr@whitecliffe.com"
+            });
 
+            Users.Add(new User
+            {
+                FirstName = "Monique",
+                LastName = "Warrington",
+                EmailAddress = "monique@whitecliffe.com"
+            });
             BindingContext = this;
-
         }
 
-        //protected override async void OnAppearing()
-        //{
-        //    await _connection.CreateTableAsync<User>();
-
-        //    var users = await _connection.Table<User>().ToListAsync();
-        //    _userList = new ObservableCollection<User>(users);
-
-        //    clientListView.ItemsSource = _userList;
-
-        //    base.OnAppearing();
-        //}
+        
 
         private void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

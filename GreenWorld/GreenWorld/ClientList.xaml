@@ -9,13 +9,12 @@
              NavigationPage.HasBackButton="True"
              Title="ClientList">
     <StackLayout Margin="5"
-                 HorizontalOptions="Center"
-                 BackgroundColor="DarkGoldenrod">
-        <ListView ItemsSource="{Binding ClientList._userList}"
+                 HorizontalOptions="Center">
+        <ListView ItemsSource="{Binding Users}"
             HasUnevenRows="True"
                   ItemSelected="OnListViewItemSelected"
                   ItemTapped="OnListViewItemTapped"
-                  x:Name="clientListView"><!--ItemsSource="{Binding _userList}"-->
+                  x:Name="clientListView">
             <ListView.ItemTemplate >
                 <DataTemplate >
                     <ViewCell >
@@ -25,41 +24,35 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0"
-                                   Grid.RowSpan="3"
-                                   Source="ImagePlaceholder"
-                                   Aspect="AspectFill"
-                                   HeightRequest="80"
-                                   WidthRequest="80" />
-                            <Label Grid.Column="1"
+                            <Label Grid.Column="0"
                                    Grid.Row="0"
                                    FontAttributes="Bold"
-                                   TextDecorations="Underline"
                                    TextColor="ForestGreen"
                                    FontSize="Default"
-                                   HorizontalOptions="Center"/><!--Text="{Binding FirstName}"-->
-                            <Label Grid.Row="1"
-                                   Grid.Column="1"
-                                   Grid.ColumnSpan="2"
-                                   VerticalOptions="End" /><!--Text="{Binding LastName}"-->
-                            <StackLayout Grid.Row="2"
-                                         Grid.Column="1"
-                                         Grid.ColumnSpan="2"
+                                   HorizontalOptions="StartAndExpand"
+                                   Text="{Binding FirstLastName, StringFormat='Name: {0:F0}.'}"/>
+                            <Label Grid.Column="0"
+                                   Grid.Row="1"
+                                   FontAttributes="Bold"
+                                   TextColor="LightSeaGreen"
+                                   FontSize="Default"
+                                   HorizontalOptions="StartAndExpand"
+                                   Text="{Binding EmailAddress,
+                                StringFormat='Email: {0:F0}'}"/>
+                            <StackLayout Grid.Row="1"
+                                         Grid.Column="0"
                                          Orientation="Horizontal"
                                          HorizontalOptions="Center">
                                 <Label
                                     TextColor="Blue"
-                                   TextDecorations="Underline"
-                                   x:Name="LinkLabel" 
-                                    IsVisible="False"/><!--Text="{Binding EmailAddress}"-->
-
+                                    TextDecorations="Underline"
+                                    x:Name="LinkLabel" 
+                                    IsVisible="False"/>
                             </StackLayout>
 
                         </Grid>

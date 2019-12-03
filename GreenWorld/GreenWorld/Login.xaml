@@ -11,18 +11,18 @@
              Title="Login">
     
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center"
-                     HorizontalOptions="Center">
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="CenterAndExpand">
             <Image Source="ImagePlaceholder"
                    Aspect="AspectFill"/>
             <Entry x:Name="UsernameEntry"
                    Placeholder="Username"/>
             <Entry x:Name="PasswordEntry"
-                   Placeholder="Password"/>
+                   Placeholder="Password"
+                   IsPassword="True"/>
             <Button x:Name="LoginButton"
-                    Text="Login"/>
-
-
+                    Text="Login"
+                    Clicked="LoginButton_OnClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
