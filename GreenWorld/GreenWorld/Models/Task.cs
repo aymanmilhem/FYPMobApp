@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GreenWorld
+﻿namespace GreenWorld.Models
 {
     public class Task
     {

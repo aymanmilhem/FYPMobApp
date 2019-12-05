@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GreenWorld.ClientList"
+             x:Class="GreenWorld.Views.ClientList"
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="True"
              Title="ClientList">

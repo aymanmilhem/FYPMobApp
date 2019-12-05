@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using GreenWorld.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GreenWorld
+namespace GreenWorld.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMenuPage : ContentPage
@@ -46,7 +42,6 @@ namespace GreenWorld
 
         private async void MainPageUserListButton_Clicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new ClientList());
             await Navigation.PushAsync(new ClientList());
         }
     }

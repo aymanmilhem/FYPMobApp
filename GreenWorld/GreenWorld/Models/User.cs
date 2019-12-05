@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
+﻿using SQLite;
 
-namespace GreenWorld
+namespace GreenWorld.Models
 {
     public class User
     {
